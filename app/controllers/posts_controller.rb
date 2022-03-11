@@ -7,8 +7,13 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params["post"])
+    @post.user = @current_user
     @post.save
     redirect_to "/places/#{@post.place.id}"
   end
+
+  def show
+    @place = Place.find(params[:id])
+end
 
 end

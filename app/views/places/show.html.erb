@@ -6,10 +6,10 @@
 
 
   <div class="container">
-      <div class="row">
+      <div class="row mt-4">
         <% for post in @place.posts %>
           <%if post.user_id == @current_user.id%>
-            <div class="col-md-3">
+            <div class="col-md-3 px-2">
               <h3><%= post.title %></h3>
               <% if post.uploaded_image.attached? %>
                     <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">

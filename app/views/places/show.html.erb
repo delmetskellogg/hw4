@@ -2,14 +2,16 @@
 
 <h2>My Posts</h2>
 <% for post in @place.posts %>
-  <h3><%= post.title %></h3>
-  <% if post.uploaded_image.attached? %>
-        <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
-      <% else %>
-        <img src="<%= post.image %>" class="img-fluid">
+  <%if post.user_id = @current_user.user_id%>
+    <h3><%= post.title %></h3>
+    <% if post.uploaded_image.attached? %>
+          <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
+        <% else %>
+          <img src="<%= post.image %>" class="img-fluid">
+    <% end %>
+    <h4><%= post.posted_on %></h4>
+    <p><%= post.description %></p>
   <% end %>
-  <h4><%= post.posted_on %></h4>
-  <p><%= post.description %></p>
 <% end %>
 
 <p>

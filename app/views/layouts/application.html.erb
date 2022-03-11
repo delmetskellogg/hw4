@@ -23,8 +23,8 @@
             <%= "Welcome, #{@current_user.username}" %>
             <%= button_to "Logout", "/sessions/logout", method: :delete %>
           <% else %>
-            <a href="/sessions/new">Login</a>
-            <a href="/users/new">Signup</a>
+              <a class="btn btn-primary" href="/sessions/new" role="button">Login</a>
+              <a class="btn btn-primary" href="/users/new" role="button">Signup</a>
           <% end %>
         </li>
         

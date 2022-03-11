@@ -1,22 +1,28 @@
-<h1><%= @place.name %></h1>
+<% if @current_user %> 
+  <h1><%= @place.name %></h1>
 
-<h2>My Posts</h2>
-<% for post in @place.posts %>
-  <%if post.user_id = @current_user.user_id%>
-    <h3><%= post.title %></h3>
-    <% if post.uploaded_image.attached? %>
-          <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
-        <% else %>
-          <img src="<%= post.image %>" class="img-fluid">
+  <h2>My Posts</h2>
+
+  <% for post in @place.posts %>
+    <%if post.user_id == @current_user.id%>
+      <h3><%= post.title %></h3>
+      <% if post.uploaded_image.attached? %>
+            <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
+          <% else %>
+            <img src="<%= post.image %>" class="img-fluid">
+      <% end %>
+      <h4><%= post.posted_on %></h4>
+      <p><%= post.description %></p>
     <% end %>
-    <h4><%= post.posted_on %></h4>
-    <p><%= post.description %></p>
-  <% end %>
-<% end %>
 
-<p>
-  <a href="/posts/new?place_id=<%= @place.id %>">New Post</a>
-</p>
+  <p>
+    <a href="/posts/new?place_id=<%= @place.id %>">New Post</a>
+  </p>
+
+  <% end %>
+<% else %>
+  
+<% end %>
 
 <p>
   <a href="/places">Back to All Places</a>

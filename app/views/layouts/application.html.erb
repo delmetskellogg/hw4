@@ -18,16 +18,22 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
-        <li class="nav-item">
-          <% if @current_user %> 
-            <%= "Welcome, #{@current_user.username}" %>
-            <%= button_to "Logout", "/sessions/logout", method: :delete %>
-          <% else %>
-              <a class="btn btn-primary" href="/sessions/new" role="button">Login</a>
-              <a class="btn btn-primary" href="/users/new" role="button">Signup</a>
-          <% end %>
-        </li>
         
+        <% if @current_user %> 
+          <li class="nav-item">
+            <%= "Welcome, #{@current_user.username}" %>
+          </li>
+          <li class="nav-item">
+            <%= button_to "Logout", "/sessions/logout", method: :delete %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="btn btn-primary" href="/sessions/new" role="button">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-primary" href="/users/new" role="button">Signup</a>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
